@@ -6,26 +6,25 @@
     <link rel="stylesheet" href="./habits.component.css">
 </head>
 
-<div class="container">
-    <div class="bg-white justify-content-center rounded-1 pt-1 table-responsive">
-        <div class="m-3 ms-4">
-            <h3>{{actualDay}}/<span class="fw-bold">{{actualMonth}}</span></h3>
+<div class="container m-0">
+    <div class="bg-card justify-content-center rounded-3 pt-1 p-2">
+        <div class="m-3 ms-5 text-white">
+            <h3 class="">{{actualMonth}} <span class="fw-bolder fs-3">{{actualDay}}</span></h3>
         </div>
 
-        <table class="table table-bordered" style="table-layout: fixed">
-            <thead>
-                <th class="text-center">Hora</th>
-                <th *ngFor="let day of weekDays" class="text-center">{{day}}</th>
+        <table class="table table-hover table-light table-group-divider table-bordered table-striped border-dark border-opacity-10 rounded-3">
+            <thead class="bg-dark">
+                <th class="text-center text-white">Hora</th>
+                <th *ngFor="let day of weekDays" class="text-center text-white" style="table-layout: fixed">{{day}}</th>
             </thead>
-            <tbody class="table-dark">
-                <tr *ngFor=" let time of hours" class="text-black fw-bold text-center bg-body">{{time}}
-                    <td *ngFor="let day of weekDays"></td>
+            <tbody class="">
+                <tr *ngFor=" let time of hours" class="text-white text-center bg-body bg-gradient">{{time}}
+                    <td *ngFor="let day of weekDays" class="">
+                    </td>
                 </tr>
             </tbody>
         </table>
-       
     </div>
-    <div class="col-xl-4">
-        
-    </div>
+    <app-list-habit></app-list-habit>
+    <app-create-habit></app-create-habit>
 </div>

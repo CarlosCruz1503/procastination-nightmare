@@ -32,6 +32,13 @@ import { CountingComponent } from './components/mainappcomponents/counting/count
 import { CreateComponentComponent } from './components/mainappcomponents/counting/create-component/create-component.component';
 import { HistoryComponent } from './components/mainappcomponents/counting/history/history.component';
 import { TransactionComponent } from './components/mainappcomponents/counting/transaction/transaction.component';
+import { ModalHabitComponent } from './components/HabitsComponents/create-habit/create-habit.component';
+import { ListHabitComponent } from './components/HabitsComponents/list-habit/list-habit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 registerLocaleData(localeEs)
 
 
@@ -57,7 +64,9 @@ registerLocaleData(localeEs)
     CountingComponent,
     CreateComponentComponent,
     HistoryComponent,
-    TransactionComponent
+    TransactionComponent,
+    ModalHabitComponent,
+    ListHabitComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +79,12 @@ registerLocaleData(localeEs)
     NgbModule,
     NgbModalModule,
     CommonModule,
-    DatePipe
+    DatePipe,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatInputModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [
     {provide: LOCALE_ID,
