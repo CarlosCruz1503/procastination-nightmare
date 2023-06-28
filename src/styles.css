@@ -56,7 +56,9 @@ body {
  li, ul {
   list-style: none;
  }
-
+ .bg-btn {
+  background: #ECECEC;
+}
  .btn-primary {
   background-color: #00D2E5;
   border: none;
@@ -243,3 +245,6 @@ b { /* used for event dates/times */
   background-color: #363b45;
 }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

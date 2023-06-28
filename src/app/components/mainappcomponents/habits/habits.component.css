@@ -1,14 +1,8 @@
 
   .N-bg-primary {
-    background-color: rgb(54, 59, 69);
+    background-color: rgba(204, 205, 209, 0.886);
   }
-  .txt-color {
-    color: #F1F2F4;
+  .bg-gray {
+    background-color: rgb(178, 178, 178);
   }
-
-  @media (max-width: 768px) { 
-    .N-tittle-span {
-      display: none;
-      background-color: #ffff ;
-    }
-  }
+  
