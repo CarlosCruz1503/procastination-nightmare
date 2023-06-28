@@ -36,7 +36,7 @@ import { TextFieldComponent } from './components/mainappcomponents/tasktables/te
 import { StateModalComponent } from './components/mainappcomponents/tasktables/state-modal/state-modal.component';
 import { LoginComponent } from './routes/login/login.component';
 import { RegisterComponent } from './routes/register/register.component';
-import { NotasComponent } from './components/notas/notas.component';
+import { NotasComponent } from './components/mainappcomponents/notas/notas.component';
 registerLocaleData(localeEs)
 
 

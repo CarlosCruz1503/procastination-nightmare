@@ -48,7 +48,7 @@ export class BankService {
 
 
   deleteBank(_id: string){
-    return this.http.delete(`${this.urlApi}/deleteBank/${_id}`)
+    return this.http.delete(`${this.urlApi}/${_id}`, { headers: new HttpHeaders({'Authorization': 'key ' + this.token})})
   }
 
 

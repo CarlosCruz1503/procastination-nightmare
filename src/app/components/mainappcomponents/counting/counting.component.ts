@@ -25,7 +25,11 @@ export class CountingComponent {
   }
 
   deleteBank(bank:any){
+    console.log(bank)
     this.bankService.deleteBank(bank._id).subscribe((data: any) => {
+      console.log({ data });
+    });
+    this.bankService.getAllBanks().subscribe((data: any) => {
       console.log({ data });
       this.allBanks = data
     });
