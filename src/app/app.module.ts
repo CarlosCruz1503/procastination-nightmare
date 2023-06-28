@@ -37,6 +37,8 @@ import { StateModalComponent } from './components/mainappcomponents/tasktables/s
 import { LoginComponent } from './routes/login/login.component';
 import { RegisterComponent } from './routes/register/register.component';
 import { NotasComponent } from './components/mainappcomponents/notas/notas.component';
+
+
 registerLocaleData(localeEs)
 
 

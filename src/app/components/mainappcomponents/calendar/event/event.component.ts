@@ -21,6 +21,7 @@ export class EventComponent implements OnInit {
   event: EventInput = {
     tareas: [],
   };
+  absoluteTitle:string = ""
   isCreatingEvent: boolean = true;
   isEditable: boolean = false;
 
@@ -42,6 +43,7 @@ export class EventComponent implements OnInit {
    */
   openModal(title: string, data: any, isCreating: boolean): void {
     this.modelTitle = title;
+    this.absoluteTitle = data['title']
     this.event = {
       id: data.id,
       title: data['title'],
@@ -71,7 +73,6 @@ export class EventComponent implements OnInit {
     });
   }
 
-
   getAllEvents() {
     this.eventService.getAllEvents().subscribe((data: any) => {
       this.eventService.allEvents = data.result;
@@ -79,22 +80,31 @@ export class EventComponent implements OnInit {
     });
   }
 
-  deleteEvent(_id: string) {
-    this.eventService.deleteEvent(_id).subscribe((data) => {
-      alert('Evento Eliminado');
+  deleteEvent() {
+    console.log(this.event);
+    if (this.event.title) {
+      this.eventService.deleteEvent(this.event.title).subscribe((data) => {
+        alert('Evento Eliminado');
+        this.getAllEvents();
+      });
       this.getAllEvents();
-    });
-    this.eventDeleted.emit(this.event);
-    this.activeModal.dismissAll();
+      this.eventDeleted.emit(this.event);
+      this.activeModal.dismissAll();
+    }
   }
 
   updateEvent() {
-    this.eventService.updateEvent(this.event).subscribe((response: any) => {
+    console.log(this.event);
+    let data = {
+      event:this.event,
+      title:this.absoluteTitle
+    }
+    this.eventService.updateEvent(data).subscribe((response: any) => {
       // Manejar la respuesta del servidor si es necesario
-      alert('Evento actualizado');
       this.getAllEvents(); // Obtener la lista actualizada de eventos
       this.activeModal.dismissAll(); // Cerrar el modal
     });
+    this.getAllEvents();
   }
 
   saveTarea(tarea: any) {
