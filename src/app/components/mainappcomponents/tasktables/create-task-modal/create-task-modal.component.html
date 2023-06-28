@@ -1,0 +1,27 @@
+<div class="modal fade" data-bs-theme="dark" id="creationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Ingrese los datos de la nueva tarea:</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form #taskForm = "ngForm" (ngSubmit)="test()">
+            <div class="modal-body d-flex flex-wrap dg-flex-wrap-personalized gap-2">
+                <label for="name" class="text-black" >Task Name</label>
+                <input
+                name="name"
+                #_id="ngModel"
+                [(ngModel)]="taskService.taskToCreate.name"
+                type="text"
+                placeholder="Insert Task Name"
+                />
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Crear Tarea</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
