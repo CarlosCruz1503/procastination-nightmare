@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { TasktableService } from 'src/app/api/tasktables/tasktable.service';
 
 @Component({
   selector: 'app-tasktables',
@@ -6,20 +7,17 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tasktables.component.css']
 })
 export class TasktablesComponent {
-  @Input() campo1:Boolean = false
-
-  changeCampo1(){
-    this.campo1= true
-    setTimeout(()=>{ // this will make the execution after the above boolean has changed
-      const me:any = document.querySelector("#myInput")
-      me.setSelectionRange( -1, -1);
-    },0);
-    setTimeout(()=>{ // this will make the execution after the above boolean has changed
-      const me:any = document.querySelector("#myInput")
-      me.focus();
-    },0);
+  constructor(public taskService:TasktableService){}
+  ngOnInit(){
+    this.getAllTasks()
+    console.log(this.taskService.allTasks)
+    console.log(this.taskService.allTasks)
   }
-  changeCampo2(){
-    this.campo1= false
+  getAllTasks(){
+    this.taskService.getAllTasks().subscribe((data:any)=>{
+      this.taskService.allTasks = data || []
+      console.log(data)
+    }
+    )
   }
 }

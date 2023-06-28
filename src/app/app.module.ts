@@ -44,6 +44,7 @@ import { StateModalComponent } from './components/mainappcomponents/tasktables/s
 import { LoginComponent } from './routes/login/login.component';
 import { RegisterComponent } from './routes/register/register.component';
 import { NotasComponent } from './components/mainappcomponents/notas/notas.component';
+import { CreateTaskModalComponent } from './components/mainappcomponents/tasktables/create-task-modal/create-task-modal.component';
 registerLocaleData(localeEs)
 
 
@@ -77,6 +78,7 @@ registerLocaleData(localeEs)
     LoginComponent,
     RegisterComponent,
     NotasComponent
+    CreateTaskModalComponent
   ],
   imports: [
     BrowserModule,

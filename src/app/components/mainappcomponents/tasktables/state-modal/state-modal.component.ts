@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./state-modal.component.css']
 })
 export class StateModalComponent {
-
+  
 }

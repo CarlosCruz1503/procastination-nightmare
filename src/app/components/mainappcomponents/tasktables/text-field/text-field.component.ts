@@ -25,4 +25,5 @@ export class TextFieldComponent {
     this.content= me.value
     this.campo1= false
   }
+
 }

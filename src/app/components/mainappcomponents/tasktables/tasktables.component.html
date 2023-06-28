@@ -178,7 +178,7 @@
                 </div>
                 </li>
                 <li><button id="deshacer" class="dropdown-item" type="button">Deshacer Sort</button></li>
-            </ul>
+                </ul>
             </div>
 
             <!-- <button class="btn btn-dark">Sort</button> -->
@@ -191,7 +191,7 @@
         </div>
         <!-- Expand, dots, new -->
         <div class="d-flex justify-content-end flex-grow-2 gap-2">
-            <button class="btn btn-dark">
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#creationModal">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
                     <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
                     <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
@@ -277,109 +277,55 @@
             </thead>
             <!-- Cuerpo-->
             <tbody>
-            <!-- Fila 1 -->
-            <tr>
-                <th scope="row">1</th>
-                <td>
-                    <!-- <button class="inv-button" (click)="changeCampo1()"> Crear HTML y CSS <input id="myInput" *ngIf="campo1" class="inv-input" type="text" value="Crear HTML y CSS" (blur)="changeCampo2()"></button> -->
-                    <app-text-field content="Crear HTML y CSS"></app-text-field>
-                </td>
-                <td id="fila1">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Completado
-                    </button>
-                </td>
-                <td>
-                    <!-- Frontend -->
-                    <app-text-field content="Frontend"></app-text-field>
-                </td>
-                <td>
-                    <app-text-field content="23-Mar-2023"></app-text-field>
-                </td>
-                <td>
-                    <app-text-field content="25-Mar-2023"></app-text-field>
-                </td>
-                <td>
-                    <app-text-field content="Roberto"></app-text-field>
-                </td>
-            </tr>
-            <!-- Fila 2 -->
-            <!-- <tr class="text-light dg-no-border-table">
-                <th scope="row">2</th>
-                <td>Diseño de la base de datos</td>
-                <td id="fila2" >
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    En Progreso
-                  </button>
-                </td>
-                <td>Backend</td>
-                <td>15-Mar-2023</td>
-                <td>25-Mar-2023</td>
-                <td style="border-bottom: none;">Rodrigo</td>
-            </tr> -->
-            <!-- Fila 3 -->
-            <!-- <tr class="text-light dg-no-border-table">
-                <th scope="row">3</th>
-                <td>Diseño de Mock-Ups</td>
-                <td id="fila3">
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Con Demora
-                      </button>
-                </td>
-                <td>UX/UI</td>
-                <td>16-Mar-2023</td>
-                <td>01-Abr-2023</td>
-                <td style="border-bottom: none;">Carmen</td>
-            </tr> -->
-            <!-- Fila 4 -->
-            <!-- <tr class="text-light dg-no-border-table">
-                <th scope="row">4</th>
-                <td>Comprar Pizza</td>
-                <td id="fila4">
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        No iniciado
-                    </button>
-                </td>
-                <td>Project Manager</td>
-                <td>26-Mar-2023</td>
-                <td>27-Mar-2023</td>
-                <td style="border-bottom: none;">Karen</td>
-            </tr> -->
-            <!-- Fila 5 -->
-            <!-- <tr class="text-light dg-no-border-table">
-                <th scope="row">5</th>
-                <td>Preparación del servidor</td>
-                <td id="fila5">
-                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Aplazado
-                    </button>
-                </td>
-                <td>Redes</td>
-                <td>30-Mar-2023</td>
-                <td>15-Abr-2023</td>
-                <td style="border-bottom: none;">Mario</td>
-            </tr> -->
-            <!-- Fila 6 -->
-            <!-- <tr class="text-light dg-no-border-table">
-                <th scope="row">6</th>
-                <td>Adquisición del Dominio</td>
-                <td id="fila6">
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Cancelado
-                    </button>
-                </td>
-                <td>Comercial</td>
-                <td>N/A</td>
-                <td>N/A</td>
-                <td style="border-bottom: none;">Juan</td>
-            </tr> -->
-            
+            <!-- Imprimir Tareas  -->
+                <tr *ngFor="let task of taskService.allTasks, let indexOf=index">
+                    <th scope="row">{{indexOf+1}}</th>
+                    <td>
+                        <!-- <button class="inv-button" (click)="changeCampo1()"> Crear HTML y CSS <input id="myInput" *ngIf="campo1" class="inv-input" type="text" value="Crear HTML y CSS" (blur)="changeCampo2()"></button> -->
+                        <app-text-field content={{task.name}}></app-text-field>
+                    </td>
+                    <td id="fila1" [ngSwitch]="task.state">
+                        <button *ngSwitchCase="'Completado'" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            {{task.state}}
+                        </button>
+                        <button *ngSwitchCase="'En Progreso'" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            {{task.state}}
+                        </button>
+                        <button *ngSwitchCase="'Con Demora'" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            {{task.state}}
+                        </button>
+                        <button *ngSwitchCase="'Aplazado'" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            {{task.state}}
+                        </button>
+                        <button *ngSwitchCase="'Cancelado'" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            {{task.state}}
+                        </button>
+                        <button *ngSwitchCase="'No Iniciado'" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            {{task.state}}
+                        </button>
+                        
+                    </td>
+                    <td>
+                        <!-- Frontend -->
+                        <app-text-field content={{task.type}}></app-text-field>
+                    </td>
+                    <td>
+                        <app-text-field content={{task.startdate}}></app-text-field>
+                    </td>
+                    <td>
+                        <app-text-field content={{task.enddate}}></app-text-field>
+                    </td>
+                    <td>
+                        <app-text-field content={{task.inCharge}}></app-text-field>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </div>
 
-<!-- Modal -->
+<!-- Modal de botón Estado -->
 
 <app-state-modal></app-state-modal>
+<app-create-task-modal></app-create-task-modal>
 
 </div>
