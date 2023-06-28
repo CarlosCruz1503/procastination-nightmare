@@ -4,6 +4,12 @@ import jwtDecode from 'jwt-decode';
 import { User } from 'src/app/models/user.model';
 import { environment } from 'src/environments/environment.development';
 
+class Auth {
+  email?: '';
+  password?: '';
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,10 +18,7 @@ export class UserService {
   urlApi = `${environment.API_URI}/user`
   userToCreate : User = new User()
   allUsers: User[] = []
-  auth: any = {
-    email: '',
-    password: ''
-  }
+  loginToCreate : Auth = new Auth()
 
 
   constructor(private http: HttpClient) {     
@@ -28,7 +31,7 @@ export class UserService {
   }
 
   createUser(data : User){
-    return this.http.post(`${this.urlApi}/create`, data)
+    return this.http.post(`${this.urlApi}/register`, data)
   }
 
   deleteUser(_id:string){
