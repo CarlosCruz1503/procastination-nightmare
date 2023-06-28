@@ -15,7 +15,7 @@ export class BankService {
   urlApiTransaction = `${environment.API_URI}/transaction`
   transactionToCreate: Transaction = new Transaction()
   allTransactions: Transaction[] = []
-  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY0OTI0NzU1NzZhMjRlODBjOGNjZmI0ZSIsIm5hbWUiOiJDYXJsb3NDcnV6IiwiZW1haWwiOiJjYXJsb3NjcnVAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkMEZXckpQdi5LeUFJYUNFZlUwbnNxT3RONzdjNGNnWWIvVHlMdktkNmVqaUxNV29YemQ4eEciLCJpbWFnZSI6bnVsbH0sImlhdCI6MTY4NzM5NzU2OX0.gcjd1K3D8TJdlKgegXLVZg8qMuNSj7FwJQAxIWUYp58'
+  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY0OTI0NzU1NzZhMjRlODBjOGNjZmI0ZSIsIm5hbWUiOiJDYXJsb3NDcnV6IiwiZW1haWwiOiJjYXJsb3NjcnVAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkMEZXckpQdi5LeUFJYUNFZlUwbnNxT3RONzdjNGNnWWIvVHlMdktkNmVqaUxNV29YemQ4eEciLCJpbWFnZSI6bnVsbH0sImlhdCI6MTY4NzgyMjgxNX0.KfXhvRzJ__IysO9O_lROHy6Afor-KNVPGfjhEAOpQqA'
   constructor(private http: HttpClient) {
   }
 
@@ -31,7 +31,7 @@ export class BankService {
   }
 
   createBank(data: Bank){
-    return this.http.post(`${this.urlApi}/`, data)
+    return this.http.post(`${this.urlApi}/`, data, { headers: new HttpHeaders({'Authorization': 'key ' + this.token})})
   }
 
   createTransaction(data: any){
@@ -48,7 +48,7 @@ export class BankService {
 
 
   deleteBank(_id: string){
-    return this.http.delete(`${this.urlApi}/deleteBank/${_id}`)
+    return this.http.delete(`${this.urlApi}/${_id}`, { headers: new HttpHeaders({'Authorization': 'key ' + this.token})})
   }
 
 

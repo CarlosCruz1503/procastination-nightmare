@@ -39,6 +39,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { TextFieldComponent } from './components/mainappcomponents/tasktables/text-field/text-field.component';
+import { StateModalComponent } from './components/mainappcomponents/tasktables/state-modal/state-modal.component';
+import { LoginComponent } from './routes/login/login.component';
+import { RegisterComponent } from './routes/register/register.component';
+import { NotasComponent } from './components/mainappcomponents/notas/notas.component';
 registerLocaleData(localeEs)
 
 
@@ -66,7 +71,12 @@ registerLocaleData(localeEs)
     HistoryComponent,
     TransactionComponent,
     ModalHabitComponent,
-    ListHabitComponent
+    ListHabitComponent,
+    TextFieldComponent,
+    StateModalComponent,
+    LoginComponent,
+    RegisterComponent,
+    NotasComponent
   ],
   imports: [
     BrowserModule,
