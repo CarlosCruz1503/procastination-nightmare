@@ -34,6 +34,9 @@ import { HistoryComponent } from './components/mainappcomponents/counting/histor
 import { TransactionComponent } from './components/mainappcomponents/counting/transaction/transaction.component';
 import { TextFieldComponent } from './components/mainappcomponents/tasktables/text-field/text-field.component';
 import { StateModalComponent } from './components/mainappcomponents/tasktables/state-modal/state-modal.component';
+import { LoginComponent } from './routes/login/login.component';
+import { RegisterComponent } from './routes/register/register.component';
+import { NotasComponent } from './components/notas/notas.component';
 registerLocaleData(localeEs)
 
 
@@ -61,7 +64,10 @@ registerLocaleData(localeEs)
     HistoryComponent,
     TransactionComponent,
     TextFieldComponent,
-    StateModalComponent
+    StateModalComponent,
+    LoginComponent,
+    RegisterComponent,
+    NotasComponent
   ],
   imports: [
     BrowserModule,
