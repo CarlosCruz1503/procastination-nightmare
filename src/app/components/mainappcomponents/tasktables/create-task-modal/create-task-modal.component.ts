@@ -41,6 +41,7 @@ export class CreateTaskModalComponent {
       this.taskService.createTask(data).subscribe((data:any)=>{
         // alert(data.status>399 ? "Error al crear la tarea": "Tarea Correctamente Creada");
       })
+      
       this.getTasksAgain()
 
     }
