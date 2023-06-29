@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, ElementRef, ViewChild  } from '@angular/core';
+import { TasktableService } from 'src/app/api/tasktables/tasktable.service';
 
 @Component({
   selector: 'app-tasktables',
@@ -6,20 +7,28 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tasktables.component.css']
 })
 export class TasktablesComponent {
-  @Input() campo1:Boolean = false
+  constructor(public taskService:TasktableService){}
 
-  changeCampo1(){
-    this.campo1= true
-    setTimeout(()=>{ // this will make the execution after the above boolean has changed
-      const me:any = document.querySelector("#myInput")
-      me.setSelectionRange( -1, -1);
-    },0);
-    setTimeout(()=>{ // this will make the execution after the above boolean has changed
-      const me:any = document.querySelector("#myInput")
-      me.focus();
-    },0);
+
+  ngOnInit(){
+    this.getAllTasks()
+    console.log(this.taskService.allTasks)
   }
-  changeCampo2(){
-    this.campo1= false
+  createTask(){
+    this.taskService.taskToCreate.state = "No Iniciado"
+  }
+  refreshTasks(gettask: Boolean){
+    if(gettask){
+      this.getAllTasks()
+      const mybtn:any = document.querySelector("#closebtn")
+      mybtn.click()
+    }
+  }
+  getAllTasks(){
+    this.taskService.getAllTasks().subscribe((data:any)=>{
+      this.taskService.allTasks = data || []
+      console.log(data)
+    }
+    )
   }
 }

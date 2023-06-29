@@ -28,9 +28,9 @@
                 <li class="list-unstyled">
                     <a [routerLink]="['/mainapp']" (click)="selection='counting'" class="link-lateral-navbar fs-6 text-decoration-none position-relative d-table">
                         <span class="material-icons-outlined position-relative text-center">
-                            autorenew
+                            payments
                         </span>
-                        <span class="name-option position-relative ms-4">Counting</span>
+                        <span class="name-option position-relative ms-4">Contabilidad</span>
                     </a>
                 </li>
                 <li class="list-unstyled">
@@ -62,52 +62,7 @@
     </div>
     <div class="section-space-work">
         <nav class="navbar navbar-expand-lg background-navbar-superior">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <p style="color:white"></p>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa-solid fa-bars" style="color: white;"></i>
-                </button>
-                <div class="collapse navbar-collapse c-nav-superior" id="navbarSupportedContent">
-                    <form class="d-flex c-nav-items-toogle" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                    <div class="input-group c-nav-items-toogle d-flex justify-content-center align-items-center"
-                        style="width: 100%;">
-                        <label class="input-group-text" for="inputGroupSelect01">Cambiar a</label>
-                        <select class="form-select" id="inputGroupSelect01" style="max-width: 12rem">
-                            <option selected>Bit</option>
-                            <option value="1">Bit 2</option>
-                            <option value="2">Bit 3</option>
-                        </select>
-                    </div>
-                    <span class="d-flex align-items-center justify-content-center gap-1 c-nav-items-toogle"
-                        style="color: white">
-                        <button class="btn" style="
-                              border-radius: 0.3rem;
-                              width: 10rem;
-                              background-color: #00d2e5;
-                              color: white;
-                            ">
-                            <p>Crear +</p>
-
-                        </button>
-                        <i class="fa-regular fa-bell"></i>
-                        <button class="btn d-flex align-items-center justify-content-center" style="
-                              background-color: #00d2e5;
-                              border-radius: 50%;
-                              width: 50px;
-                              height: 50px;
-                            ">
-                            <img src="assets/img/avatar.png" alt="" width="40px" height="40px" />
-                        </button>
-                    </span>
-                </div>
-            </div>
+            
         </nav>
 
         <div class="container-fluid space-work m-2" [ngSwitch]="selection" >
