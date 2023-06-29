@@ -17,6 +17,10 @@
     text-transform: uppercase;
 }
 
+.link-hero{
+text-decoration: none
+
+}
 #hero p {
     color: #1c698c;
     margin: 10px 0 0 0;
