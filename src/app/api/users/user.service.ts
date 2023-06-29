@@ -47,12 +47,16 @@ export class UserService {
   }
 
   login(data : any){
+    localStorage.setItem('user', data)
     return this.http.post(`${this.urlApi}/login`, data)
-    
   }
 
   isLoggedIn(){
     return localStorage.getItem('token') ? true : false
+  }
+
+  logOut(){
+    localStorage.removeItem('token') 
   }
 
   decodeToken(): any{
@@ -66,6 +70,7 @@ export class UserService {
     }
     return decoded
   }
+  
 
   isAdmin(){
     let obj = this.decodeToken()

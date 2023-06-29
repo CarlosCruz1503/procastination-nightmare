@@ -151,10 +151,19 @@ export class CalendarComponent implements OnInit {
       start: new Date(),
       end: new Date(),
       description: '',
-      tareas: []
+      tareas: [],
     };
     this.isEditable = false;
     this.openEventModal('Agregar nuevo evento', this.event, true);
+    this.eventService.getAllEvents().subscribe((events: any) => {
+      this.calendarEventsData = events.result;
+      // this._fetchData();
+      // Asignar una copia de los eventos al calendario
+      this.calendarOptions.events = [...this.calendarEventsData];
+      console.log(events.result);
+      console.log(this.event)
+
+    });
   }
 
   /**
@@ -214,6 +223,7 @@ export class CalendarComponent implements OnInit {
     };
     this.isEditable = false;
     this.openEventModal('Agregar nuevo evento', this.event, true);
+
   }
 
   /**

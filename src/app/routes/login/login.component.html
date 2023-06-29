@@ -1,5 +1,6 @@
-<div class="contenedor-formulario">
+<div class="contenedor-formulario d-flex justify-content-center align-content-center" >
     <div class="wrap">
+        <h6 class="text-black text-center">Para disfrutar de nuestras app debes estar logueado</h6>
         <form #loginform="ngForm" (ngSubmit)="login(loginform)" class="formulario" name="formulario_registro">
             <div>
 
@@ -9,7 +10,7 @@
                 
                 <div class="input-group">
 					<label class="label"  for="email">Correo:</label>
-                    <input  name="email"
+                    <input  name="email" type="email"
                     #email="ngModel" [(ngModel)]="userService.loginToCreate.email" >
                     
                 </div>
@@ -24,7 +25,7 @@
                 <input type="submit" id="btn-submit" value="Ingresar">
 
 				<div class="input-group my-2 text-center ms-5">
-					<span class="text-dark me-2">No tinenes una cuenta</span><a [routerLink]="['/register']">¿Crear Cuenta?</a>
+					<span class="text-dark me-2">No tienes una cuenta</span><a [routerLink]="['/register']">¿Crear Cuenta?</a>
 				</div>
             </div>
         </form>
