@@ -18,6 +18,9 @@ export class CreateTaskModalComponent {
   ngOnInit(){
 
   }
+  cleanForm(){
+    this.taskService.taskToCreate = new TaskTable();
+  }
   getTasksAgain() {
     this.getTasks.emit(true);
   }
@@ -41,8 +44,9 @@ export class CreateTaskModalComponent {
       this.taskService.createTask(data).subscribe((data:any)=>{
         // alert(data.status>399 ? "Error al crear la tarea": "Tarea Correctamente Creada");
       })
-      
+      this.cleanForm()
       this.getTasksAgain()
+      this.errormessage=false
 
     }
 
