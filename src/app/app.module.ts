@@ -77,7 +77,7 @@ registerLocaleData(localeEs)
     StateModalComponent,
     LoginComponent,
     RegisterComponent,
-    NotasComponent
+    NotasComponent,
     CreateTaskModalComponent
   ],
   imports: [

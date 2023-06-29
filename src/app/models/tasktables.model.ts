@@ -1,6 +1,7 @@
 export class TaskTable {
 
     //atributos
+    _id?:string
     name?: string
     state?: string
     type?: string
@@ -11,6 +12,7 @@ export class TaskTable {
 
 
     constructor(
+        _id='',
         name = '',
         state = '',
         type = '',
@@ -19,6 +21,7 @@ export class TaskTable {
         inCharge= '',
         author= ''
     ) {
+        this._id=_id;
         this.name = name;
         this.state = state;
         this.type = type;

@@ -19,4 +19,7 @@ export class TasktableService {
     console.log(this.urlApi)
     return this.http.get(`${this.urlApi}/getTasks`, { headers: new HttpHeaders({'Authorization': 'key ' + this.token})}) 
   }
+  createTask(data: TaskTable){
+    return this.http.post(`${this.urlApi}/createTask`,data, { headers: new HttpHeaders({'Authorization': 'key ' + this.token})})
+  }
 }
