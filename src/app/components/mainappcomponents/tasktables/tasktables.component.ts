@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, ElementRef, ViewChild  } from '@angular/core';
+import { TasktableService } from 'src/app/api/tasktables/tasktable.service';
+import { TaskTable } from 'src/app/models/tasktables.model';
 
 @Component({
   selector: 'app-tasktables',
@@ -6,20 +8,51 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tasktables.component.css']
 })
 export class TasktablesComponent {
-  @Input() campo1:Boolean = false
+  constructor(public taskService:TasktableService){}
+  currentid:string = ''
 
-  changeCampo1(){
-    this.campo1= true
-    setTimeout(()=>{ // this will make the execution after the above boolean has changed
-      const me:any = document.querySelector("#myInput")
-      me.setSelectionRange( -1, -1);
-    },0);
-    setTimeout(()=>{ // this will make the execution after the above boolean has changed
-      const me:any = document.querySelector("#myInput")
-      me.focus();
-    },0);
+
+  
+  ngOnInit(){
+    this.getAllTasks()
+    console.log(this.taskService.allTasks)
   }
-  changeCampo2(){
-    this.campo1= false
+  changeCurrentId(newId:any){
+    this.currentid =  newId;
   }
+  updateState(newState:string){
+    this.updateTask({"state": newState}, this.currentid)
+  }
+  createTask(){
+    this.changeCurrentId("");
+    this.taskService.taskToCreate = new TaskTable();
+    this.taskService.taskToCreate.state = "No Iniciado"
+  }
+  refreshTasks(gettask: Boolean){
+    if(gettask){
+      const mybtn:any = document.querySelector("#closebtn")
+      mybtn.click()
+      this.getAllTasks()
+      console.log("funciona")
+    }
+  }
+  getAllTasks(){
+    this.taskService.getAllTasks().subscribe((data:any)=>{
+      this.taskService.allTasks = data || []
+      console.log(data)
+    }
+    )
+  }
+  updateTask(mydata:object, id:string){
+    this.taskService.updateTask(mydata,id).subscribe((data)=>{
+      this.getAllTasks()
+    })
+  }
+  // sortTasks(asc:boolean, property:string){
+  //   if(asc){
+  //     this.taskService.allTasks.sort((a, b) => (a["name"]? < b["name"]) ? 1 : -1);
+  //   }else{
+  //     this.taskService.allTasks.sort((a, b) => (a[property] > b[property]) ? 1 : -1);
+  //   }
+  // }
 }

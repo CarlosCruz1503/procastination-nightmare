@@ -5,6 +5,10 @@
     position: relative;
 }
 
+.hero {
+  background-color: #F9F9F9;
+}
+
 .testimonials::before {
     content: "";
     position: absolute;

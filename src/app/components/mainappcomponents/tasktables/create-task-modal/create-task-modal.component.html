@@ -1,0 +1,125 @@
+<div class="modal fade" data-bs-theme="dark" id="creationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Ingrese los datos de la nueva tarea:</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form #taskForm = "ngForm" (ngSubmit)="createTask(taskForm)">
+            <div class="modal-body d-flex flex-column dg-flex-wrap-personalized gap-2 align-items-center justify-content-center">
+                <div class="d-flex flex-column w-100 gap-1" hidden>
+                  <label for="_id" class="text-light align-self-center" ></label>
+                  <input
+                  class="form-control"
+                  style="text-align: center;"
+                  name="_id"
+                  #_id="ngModel"
+                  [(ngModel)]="taskService.taskToCreate._id"
+                  type="text"
+                  placeholder=""
+                  hidden
+                  />
+                </div>
+                <div class="d-flex flex-column w-100 gap-1">
+                  <label for="name" class="text-light align-self-center" >Tarea</label>
+                  <input
+                  class="form-control"
+                  style="text-align: center;"
+                  name="name"
+                  #name="ngModel"
+                  [(ngModel)]="taskService.taskToCreate.name"
+                  type="text"
+                  placeholder="Ingrese nombre de tarea"
+                  />
+                </div>
+                <div class="d-flex flex-column w-100 gap-1">
+                  <label for="state" class="text-light align-self-center" >Estado</label>
+                  <input
+                  class="form-control"
+                  style="text-align: center;"
+                  name="state"
+                  #state="ngModel"
+                  [(ngModel)]="taskService.taskToCreate.state"
+                  type="text"
+                  placeholder="Ingrese estado"
+                  hidden/>
+                  <div class="align-self-center" [ngSwitch]="taskService.taskToCreate.state">
+                    <button *ngSwitchCase="'Completado'" type="button" class="btn btn-success" (click)="changeState()">
+                      Completado
+                    </button>
+                    <button *ngSwitchCase="'En Progreso'" type="button" class="btn btn-primary" (click)="changeState()">
+                        En Progreso
+                    </button>
+                    <button *ngSwitchCase="'Con Demora'" type="button" class="btn btn-warning" (click)="changeState()">
+                        Con Demora
+                    </button>
+                    <button *ngSwitchCase="'Aplazado'" type="button" class="btn btn-light" (click)="changeState()">
+                        Aplazado
+                    </button>
+                    <button *ngSwitchCase="'Cancelado'" type="button" class="btn btn-danger" (click)="changeState()">
+                        Cancelado
+                    </button>
+                    <button *ngSwitchCase="'No Iniciado'" type="button" class="btn btn-secondary" (click)="changeState()">
+                        No Iniciado
+                    </button>
+                  </div>
+                </div>
+                <div class="d-flex flex-column w-100 gap-1">
+                  <label for="type" class="text-light align-self-center" >Tipo</label>
+                  <input
+                  class="form-control"
+                  style="text-align: center;"
+                  name="type"
+                  #type="ngModel"
+                  [(ngModel)]="taskService.taskToCreate.type"
+                  type="text"
+                  placeholder="Ingrese tipo de tarea"
+                  />
+                </div>
+                <div class="d-flex flex-column w-100 gap-1">
+                  <label for="startdate" class="text-light align-self-center" >Fecha de inicio</label>
+                  <input
+                  class="form-control"
+                  style="text-align: center;"
+                  name="startdate"
+                  #startdate="ngModel"
+                  [(ngModel)]="taskService.taskToCreate.startdate"
+                  type="date"
+                  placeholder="Ingrese fecha de inicio de tarea"
+                  />
+                </div>
+                <div class="d-flex flex-column w-100 gap-1">
+                  <label for="enddate" class="text-light align-self-center" >Fecha de Entrega</label>
+                  <input
+                  class="form-control"
+                  style="text-align: center;"
+                  name="enddate"
+                  #endate="ngModel"
+                  [(ngModel)]="taskService.taskToCreate.enddate"
+                  type="date"
+                  placeholder="Ingrese fecha de entrega de tarea"
+                  />
+                </div>
+                <div class="d-flex flex-column gap-1 w-100">
+                  <label for="inCharge" class="text-light align-self-center" >Encargado</label>
+                  <input
+                  class="form-control"
+                  style="text-align: center;"
+                  name="inCharge"
+                  #inCharge="ngModel"
+                  [(ngModel)]="taskService.taskToCreate.inCharge"
+                  type="text"
+                  placeholder="Ingrese el encargado de la tarea"
+                  />
+                </div>
+            </div>
+            <h3 *ngIf="errormessage" class="text-danger">Error, Por favor llene todos los campos</h3>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="closebtn" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success" >Crear Tarea</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
