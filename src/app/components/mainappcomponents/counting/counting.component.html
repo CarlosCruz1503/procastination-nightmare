@@ -1,15 +1,15 @@
-<div class="container d-flex flex-column dg-card-color rounded">
+<div class="container d-flex flex-column dg-card-color rounded bg-card p-5">
     <!-- Nombre de la función -->
-    <div>
-        <h1 class="text-light">Tabla sencilla de control de billeteras</h1>
+    <div class="mb-3">
+        <h1 class="text-light"><i class="fa-solid fa-coins" style="color: #c3aa50;"></i> Administración de financiera</h1>
     </div>
     <!-- Tabla de Vista, filter, sort, search -->
-    <button class="btn btn-success text-light" (click)="createShowFunction()">Crear una nueva billetera</button>
+    <button data-bs-theme="dark" class="btn btn-primary text-light fs-2 p-2 ms-5 me-5 mb-3" (click)="createShowFunction()">Crear una nueva billetera</button>
     <app-create-component *ngIf="createShow" [createShow]="createShow" [bank]="bankSelected"
         [functionShow]="createShowFunction" (changeShow)="updateShowCreate($event)"></app-create-component>
     <app-transaction *ngIf="transactionShow" [type]="type" [bank]="bankSelected"
         (changeShow)="updateShowTransaction($event)"></app-transaction>
-    <app-history *ngIf="historyShow" [bank]="bankSelected" (changeShow)="updateShow($event)"></app-history>
+    <app-history data-bs-theme="dark" *ngIf="historyShow" [bank]="bankSelected" (changeShow)="updateShow($event)"></app-history>
     <div class="row">
         <div class="col-md-12 col-lg-6 col-xl-4" *ngFor="let bank of allBanks; index as i">
             <div class="card mt-3" >
