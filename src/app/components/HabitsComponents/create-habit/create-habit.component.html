@@ -1,66 +1,47 @@
-<div class="container d-flex justify-content-center">
-    <form #habitForm="ngForm" (ngSubmit)="createHabit(habitForm)" class="form-control w-50 bg-card border-0">
+<div class="d-flex justify-content-center">
+    <form #habitForm="ngForm" (ngSubmit)="createHabit(habitForm)" class="form-control bg-card border-0 p-4">
         <div class="d-flex flex-column">
-          <div class="d-flex">
+          <div class="d-flex mb-2">
               <div class="w-75">
                 <h3 class="fw-bold text-white m-2 ms-4">Nuevo hábito</h3>
               </div>
               <div class="d-flex justify-content-end align-content-center w-25 h-25">
-                <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white mt-2" aria-label="Close" (click)="closeCreateHabit()"></button>
               </div>
           </div>
-            <div class="d-flex w-100 gap-3 justify-content-center">
-                <mat-form-field 
-                  class="example-full-width w-100"
+            <div class="d-flex w-100 gap-3 justify-content-center mb-3">
+                <input
+                  class="w-100 form-control"
                   name="name"
                   #name="ngModel"
                   [(ngModel)]="habitService.creatingHabit.name"
                   type="text"
-                  placeholder="Nombre">
-                  <mat-label class="">Nombre habito</mat-label>
-                  <input matInput placeholder="Ej. Meditar" value="">
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-select 
-                  placeholder="Frecuencia"  
-                  #frequency="ngModel" name="frequency" 
-                  [(ngModel)]="habitService.creatingHabit.frequency">
-                    <mat-option value="daily">Diario</mat-option>
-                    <mat-option value="weekly">Semanal</mat-option>
-                    <mat-option value="monthly">Mensual</mat-option>
-                  </mat-select>
-                </mat-form-field>
-            </div>
-              <mat-form-field>
-                  <mat-select 
-                    placeholder="Categoria"  
-                    #category="ngModel" name="category" 
-                    [(ngModel)]="habitService.creatingHabit.category">
-
-                    <div class="d-flex">
-                        <div>
-                          <mat-option value="badHabit">Dejar un mal habito</mat-option>
-                          <mat-option value="meditate">Meditacion</mat-option>
-                          <mat-option value="study">Estudio</mat-option>
-                        </div>
-                        <div>
-                          <mat-option value="art">Arte</mat-option>
-                          <mat-option value="sport">Deportes</mat-option>
-                          <mat-option value="entertainment">Entretenimiento</mat-option>
-                        </div>
-                        <div>
-                          <mat-option value="finance">Finanzas</mat-option>
-                          <mat-option value="work">Trabajo</mat-option>
-                          <mat-option value="health">Salud</mat-option>
-                        </div>
-                        <div>
-                          <mat-option value="nutrition">Nutricion</mat-option>
-                          <mat-option value="home">Hogar</mat-option>
-                          <mat-option value="another">Otro</mat-option>
-                        </div>
-                    </div>
-                  </mat-select>
-                </mat-form-field>
+                  placeholder="Nombre"
+                  >
+                  <select
+                    placeholder="Frecuencia"  
+                    #frequency="ngModel" name="frequency" 
+                    [(ngModel)]="habitService.creatingHabit.frequency">
+                    <option value="daily">Diario</option>
+                    <option value="weekly">Semanal</option>
+                    <option value="monthly">Mensual</option>
+                  </select>
+            </div>  
+                   <select
+                        class ="form-control mb-3"
+                        placeholder="Categoria" 
+                        #category="ngModel" name="category" 
+                        [(ngModel)]="habitService.creatingHabit.category">
+                    
+                      <option value="badHabit">Dejar un mal hábito</option>
+                      <option value="study">Estudio</option>
+                      <option value="social">Social</option>
+                      <option value="finance">Finanzas</option>
+                      <option value="health">Salud</option>
+                      <option value="nutrition">Nutrición</option>
+                      <option value="aireLibre">Aire libre</option>
+                      <option value="home">Hogar</option>
+                  </select>
                   <textarea
                     style="resize: none"
                     name="description"
@@ -74,6 +55,6 @@
                   ></textarea>            
           
         </div>
-        <button class="btn btn-success w-100 mt-3 fw-bold" type="submit">Crear hábito</button>
+        <button class="btn btn-success w-100 mt-3 fw-bold" type="submit" >Crear hábito</button>
       </form>
 </div>

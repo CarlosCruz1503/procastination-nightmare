@@ -13,7 +13,7 @@ export class RegisterComponent {
   constructor(public userService: UserService, public router: Router) { }
 
   ngOnInit() {
-    if (this.userService.isLoggedIn()){
+    if (this.userService.isLoggedIn()) {
       this.router.navigate(["/mainapp"])
     }
   };
@@ -28,12 +28,16 @@ export class RegisterComponent {
 
     console.log("entre")
     this.userService.createUser(data).subscribe((data: any) => {
-      localStorage.setItem('token', data.token)
-      this.router.navigate(["/mainapp"])
-      alert("Usuario Creado")
-      return 
+      if (data) {
+        localStorage.setItem('token', data.token)
+        this.router.navigate(["/mainapp"])
+        alert("Usuario Creado")
+        return
+      }else {
+        alert("Error al crear el usuario")
+      }
     })
-    alert("Error al crear el usuario")
+    
   }
 
 }

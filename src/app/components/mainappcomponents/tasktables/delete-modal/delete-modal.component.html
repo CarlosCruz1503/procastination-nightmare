@@ -1,0 +1,19 @@
+<div class="modal fade" data-bs-theme="dark" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Borrar Tarea:</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex flex-wrap dg-flex-wrap-personalized gap-2">
+          <h1 class="text-light">Esta seguro que quiere borrar esta tarea?</h1>
+          <!-- <p class="text-light">{{deleteid}}</p> -->
+        </div>
+        <div class="modal-footer align-items-center justify-content-center">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No, Cancelar</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="deleteTask(deleteid)">Si, Seguro</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

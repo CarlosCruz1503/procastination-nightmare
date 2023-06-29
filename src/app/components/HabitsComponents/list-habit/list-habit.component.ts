@@ -3,6 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-habit',
@@ -13,5 +14,8 @@ export class ListHabitComponent {
 
   habitList: string[] = ['Trotar','Meditar','Estudiar','Leer']
 
-
+  constructor(private modalService: NgbModal) {}
+  closeListHabit(){
+    this.modalService.dismissAll();
+  }
 }

@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { format, eachDayOfInterval } from 'date-fns';
 import { HabitService } from 'src/app/api/habit/habits.service';
 import { Habit } from 'src/app/models/habit.models';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AskHabitComponent } from '../../HabitsComponents/ask-habit/ask-habit.component';
 
 @Component({
   selector: 'app-habits',
@@ -11,18 +13,17 @@ import { Habit } from 'src/app/models/habit.models';
 })
 
 export class HabitsComponent {
-
-  nameHabit: string = 'Nicolas Gomez Barajas';
   actualDay: any;
   actualMonth: any;
-
+  selectedDay?: string;
+  selectedCell: { day: string, time: string } | null = null;
+  frequency: string | undefined = '';
   weekDays: string[] = [];
   hours: string[] = [];
-
   startTime = new Date();
   endTime = new Date();
 
-  constructor (public habitService: HabitService) {
+  constructor (public habitService: HabitService, private modalService: NgbModal) {
     this.startTime.setHours(5,0,0); //Establece la hora de inicio a las 5:00 am
     this.endTime.setHours(24,0,0) //Establece la hora de fin a las 24:00 pm (medianoche)
 
@@ -31,6 +32,16 @@ export class HabitsComponent {
       this.hours.push(formattedHour);
       this.startTime.setTime(this.startTime.getTime() + 60 * 60 * 1000); // Avanza 1 hora
     }
+    
+  }
+  openAskHabitModal(day: string, time: string, frequency: string | undefined) {
+    this.modalService.open(AskHabitComponent);
+    this.selectedDay = day;
+    this.selectedCell = { day, time };
+    this.frequency = frequency || '';
+  }
+  isCellSelected(day: string, time: string): boolean {
+    return this.selectedCell !== null && this.selectedCell.day === day && this.selectedCell.time === time;
   }
     ngOnInit() {
       const today = new Date(); //Fecha y hora actual
@@ -48,6 +59,17 @@ export class HabitsComponent {
         this.weekDays.push(completeDay);
       }
     }
+    getFrequencyCount(): number[] {
+    if (this.frequency === 'daily') {
+      return [1]; // Mostrar el icono una vez al día
+    } else if (this.frequency === 'weekly') {
+      return [1, 2, 3, 4, 5, 6, 7]; // Mostrar el icono una vez por cada día de la semana
+    } else if (this.frequency === 'monthly') {
+      return Array.from({ length: 30 }, (_, i) => i + 1); // Mostrar el icono una vez por cada día del mes
+    } else {
+      return []; // Frecuencia desconocida
+    }
+  }
     cleanForm(){
       this.habitService.creatingHabit = new Habit()
     }

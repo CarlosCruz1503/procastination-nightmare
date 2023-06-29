@@ -45,8 +45,9 @@ import { LoginComponent } from './routes/login/login.component';
 import { RegisterComponent } from './routes/register/register.component';
 import { NotasComponent } from './components/mainappcomponents/notas/notas.component';
 import { CreateTaskModalComponent } from './components/mainappcomponents/tasktables/create-task-modal/create-task-modal.component';
-
-
+import { DeleteModalComponent } from './components/mainappcomponents/tasktables/delete-modal/delete-modal.component';
+import { UpdateModalComponent } from './components/mainappcomponents/tasktables/update-modal/update-modal.component';
+import { AskHabitComponent } from './components/HabitsComponents/ask-habit/ask-habit.component';
 registerLocaleData(localeEs)
 
 
@@ -80,7 +81,10 @@ registerLocaleData(localeEs)
     LoginComponent,
     RegisterComponent,
     NotasComponent,
-    CreateTaskModalComponent
+    CreateTaskModalComponent,
+    DeleteModalComponent,
+    UpdateModalComponent,
+    AskHabitComponent
   ],
   imports: [
     BrowserModule,
