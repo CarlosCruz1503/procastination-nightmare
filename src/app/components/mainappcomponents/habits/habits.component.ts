@@ -3,6 +3,9 @@ import { NgForm } from '@angular/forms';
 import { format, eachDayOfInterval } from 'date-fns';
 import { HabitService } from 'src/app/api/habit/habits.service';
 import { Habit } from 'src/app/models/habit.models';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AskHabitComponent } from '../../HabitsComponents/ask-habit/ask-habit.component';
+
 
 @Component({
   selector: 'app-habits',
@@ -22,7 +25,7 @@ export class HabitsComponent {
   startTime = new Date();
   endTime = new Date();
 
-  constructor (public habitService: HabitService) {
+  constructor (public habitService: HabitService, private modalService: NgbModal) {
     this.startTime.setHours(5,0,0); //Establece la hora de inicio a las 5:00 am
     this.endTime.setHours(24,0,0) //Establece la hora de fin a las 24:00 pm (medianoche)
 
@@ -31,6 +34,11 @@ export class HabitsComponent {
       this.hours.push(formattedHour);
       this.startTime.setTime(this.startTime.getTime() + 60 * 60 * 1000); // Avanza 1 hora
     }
+    
+  }
+  openAskHabitModal() {
+    this.modalService.open(AskHabitComponent);
+    // Puedes agregar configuraciones adicionales al modal si lo necesitas
   }
     ngOnInit() {
       const today = new Date(); //Fecha y hora actual

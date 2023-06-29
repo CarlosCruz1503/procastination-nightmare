@@ -19,12 +19,13 @@
             </thead>
             <tbody class="">
                 <tr *ngFor=" let time of hours" class="text-white text-center bg-body bg-gradient">{{time}}
-                    <td *ngFor="let day of weekDays" class="">
+                    <td *ngFor="let day of weekDays" class="" (click)="openAskHabitModal()">
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <app-ask-habit></app-ask-habit>
     <app-list-habit></app-list-habit>
     <app-create-habit></app-create-habit>
 </div>

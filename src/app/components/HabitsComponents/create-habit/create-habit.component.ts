@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HabitService } from 'src/app/api/habit/habits.service';
 import { Habit } from 'src/app/models/habit.models';
 
@@ -11,8 +12,10 @@ import { Habit } from 'src/app/models/habit.models';
 
 export class ModalHabitComponent {
 
-  constructor (public habitService: HabitService) {   }
-
+  constructor (public habitService: HabitService, private modalService: NgbModal) {   }
+  closeCreateHabit(){
+    this.modalService.dismissAll();
+  }
   cleanForm(){
     this.habitService.creatingHabit = new Habit()
   }
