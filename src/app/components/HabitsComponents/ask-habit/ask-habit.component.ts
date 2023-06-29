@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ListHabitComponent } from '../../HabitsComponents/list-habit/list-habit.component';
 import { ModalHabitComponent } from '../../HabitsComponents/create-habit/create-habit.component';
+import { Injectable } from '@angular/core';
+
 @Component({
   selector: 'app-ask-habit',
   templateUrl: './ask-habit.component.html',

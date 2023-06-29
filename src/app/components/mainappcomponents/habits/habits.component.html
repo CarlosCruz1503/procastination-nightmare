@@ -18,14 +18,22 @@
                 <th *ngFor="let day of weekDays" class="text-center text-white" style="table-layout: fixed">{{day}}</th>
             </thead>
             <tbody class="">
-                <tr *ngFor=" let time of hours" class="text-white text-center bg-body bg-gradient">{{time}}
-                    <td *ngFor="let day of weekDays" class="" (click)="openAskHabitModal()">
-                    </td>
+                <tr *ngFor="let time of hours" class="text-white text-center bg-body bg-gradient">{{time}}
+                  <td *ngFor="let day of weekDays" class="" (click)="openAskHabitModal(day, time, habitService.creatingHabit.frequency)">
+                    <ng-container *ngIf="isCellSelected(day, time)">
+                        <i *ngIf="habitService.creatingHabit.category === 'badHabit'" class="fa-solid fa-ban" style="color: #d21919;"></i>
+                        <i *ngIf="habitService.creatingHabit.category === 'health'" class="fa-solid fa-heart-pulse" style="color: #d21919;"></i> 
+                        <i *ngIf="habitService.creatingHabit.category === 'social'" class="fa-brands fa-rocketchat" style="color: #53cc1e;"></i> 
+                        <i *ngIf="habitService.creatingHabit.category === 'finance'" class="fa-solid fa-dollar-sign" style="color: #53cc1e;"></i> 
+                        <i *ngIf="habitService.creatingHabit.category === 'aireLibre'" class="fa-solid fa-mountain-sun"></i> 
+                        <i *ngIf="habitService.creatingHabit.category === 'study'" class="fa-solid fa-graduation-cap" style="color: #ba52e0;"></i>
+                        <i *ngIf="habitService.creatingHabit.category === 'nutrition'" class="fa-brands fa-nutritionix" style="color: #f4a434;"></i> 
+                        <i *ngIf="habitService.creatingHabit.category === 'home'" class="fa-solid fa-house" style="color: #f4a434;"></i> 
+                        <i *ngIf="habitService.creatingHabit.category === 'another'" class="fa-regular fa-grid-2-plus"></i>
+                    </ng-container>
+                  </td>
                 </tr>
-            </tbody>
+              </tbody>
         </table>
     </div>
-    <app-ask-habit></app-ask-habit>
-    <app-list-habit></app-list-habit>
-    <app-create-habit></app-create-habit>
 </div>

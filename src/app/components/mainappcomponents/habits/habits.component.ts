@@ -6,7 +6,6 @@ import { Habit } from 'src/app/models/habit.models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AskHabitComponent } from '../../HabitsComponents/ask-habit/ask-habit.component';
 
-
 @Component({
   selector: 'app-habits',
   templateUrl: './habits.component.html',
@@ -14,14 +13,13 @@ import { AskHabitComponent } from '../../HabitsComponents/ask-habit/ask-habit.co
 })
 
 export class HabitsComponent {
-
-  nameHabit: string = 'Nicolas Gomez Barajas';
   actualDay: any;
   actualMonth: any;
-
+  selectedDay?: string;
+  selectedCell: { day: string, time: string } | null = null;
+  frequency: string | undefined = '';
   weekDays: string[] = [];
   hours: string[] = [];
-
   startTime = new Date();
   endTime = new Date();
 
@@ -36,9 +34,14 @@ export class HabitsComponent {
     }
     
   }
-  openAskHabitModal() {
+  openAskHabitModal(day: string, time: string, frequency: string | undefined) {
     this.modalService.open(AskHabitComponent);
-    // Puedes agregar configuraciones adicionales al modal si lo necesitas
+    this.selectedDay = day;
+    this.selectedCell = { day, time };
+    this.frequency = frequency || '';
+  }
+  isCellSelected(day: string, time: string): boolean {
+    return this.selectedCell !== null && this.selectedCell.day === day && this.selectedCell.time === time;
   }
     ngOnInit() {
       const today = new Date(); //Fecha y hora actual
@@ -56,6 +59,17 @@ export class HabitsComponent {
         this.weekDays.push(completeDay);
       }
     }
+    getFrequencyCount(): number[] {
+    if (this.frequency === 'daily') {
+      return [1]; // Mostrar el icono una vez al día
+    } else if (this.frequency === 'weekly') {
+      return [1, 2, 3, 4, 5, 6, 7]; // Mostrar el icono una vez por cada día de la semana
+    } else if (this.frequency === 'monthly') {
+      return Array.from({ length: 30 }, (_, i) => i + 1); // Mostrar el icono una vez por cada día del mes
+    } else {
+      return []; // Frecuencia desconocida
+    }
+  }
     cleanForm(){
       this.habitService.creatingHabit = new Habit()
     }
