@@ -14,6 +14,7 @@ export class HabitService {
   createdHabitName: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
   constructor(private http: HttpClient) { 
   }
+  
   createHabit(data: Habit){
     return this.http.post(`${this.urlApi}/createHabit`, data)
   }

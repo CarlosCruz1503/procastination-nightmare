@@ -1,6 +1,6 @@
-  <div class="gap-1 d-flex flex-column align-items-center p-2 bg-card border border-white">
-    <div class="d-flex gap-5 justify-content-evenly mt-3 w-100 bg-body">
-      <h3 class="fw-bold text-white">Tus habitos</h3>
+  <div class="gap-1 d-flex flex-column align-items-center p-2 bg-card rounded-3">
+    <div class="d-flex gap-5 justify-content-evenly mt-3 w-100 ">
+      <h3 class="fw-bold text-white text-center">Tus habitos</h3>
       <button
         type="button"
         class="btn-close btn-close-white"
@@ -9,9 +9,9 @@
       ></button>
     </div>
   
-    <div class="w-100 p-4 gap-2 d-flex flex-column">
+    <div class="w-100 p-4 gap-2 d-flex flex-column bg-body">
       <p
-        class="bg-card  rounded-3 fs-5 text-white"
+        class="bg-card  rounded-3 fs-4 fw-bold text-white text-center"
         *ngFor="let habit of habitList"
       >
         {{ habit }}

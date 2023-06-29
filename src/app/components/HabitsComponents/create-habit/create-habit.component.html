@@ -10,23 +10,32 @@
               </div>
           </div>
             <div class="d-flex w-100 gap-3 justify-content-center mb-3">
+              <div class="w-100 d-flex flex-column">
+                <h5 class="text-white fw-bold">Nombre habito:</h5>
                 <input
-                  class="w-100 form-control"
-                  name="name"
-                  #name="ngModel"
-                  [(ngModel)]="habitService.creatingHabit.name"
-                  type="text"
-                  placeholder="Nombre"
-                  >
-                  <select
-                    placeholder="Frecuencia"  
-                    #frequency="ngModel" name="frequency" 
-                    [(ngModel)]="habitService.creatingHabit.frequency">
-                    <option value="daily">Diario</option>
-                    <option value="weekly">Semanal</option>
-                    <option value="monthly">Mensual</option>
-                  </select>
+                class="w-100 form-control"
+                name="name"
+                #name="ngModel"
+                [(ngModel)]="habitService.creatingHabit.name"
+                type="text"
+                placeholder="Nombre"
+                >
+              </div>
+                
+                  <div class="d-flex flex-column mt-3">
+                    <label for="frequency" class="text-white fw-bold fs-5">Frecuencia:</label>
+                    <select
+                      placeholder="Frecuencia"  
+                      #frequency="ngModel" name="frequency" 
+                      [(ngModel)]="habitService.creatingHabit.frequency">
+                      <option value="daily">Diario</option>
+                      <option value="weekly">Semanal</option>
+                      <option value="monthly">Mensual</option>
+                    </select>
+                  </div>
+                 
             </div>  
+                   <label for="category" class="text-white fw-bold fs-5">Categoria:</label>
                    <select
                         class ="form-control mb-3"
                         placeholder="Categoria" 
