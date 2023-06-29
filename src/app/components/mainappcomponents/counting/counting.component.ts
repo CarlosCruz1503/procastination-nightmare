@@ -37,9 +37,17 @@ export class CountingComponent {
 
   updateShow(show:Boolean) {
     this.historyShow = !this.historyShow
+    this.bankService.getAllBanks().subscribe((data: any) => {
+      console.log({ data });
+      this.allBanks = data
+    });
   }
   updateShowTransaction(show:Boolean) {
     this.transactionShow  = !this.transactionShow 
+    this.bankService.getAllBanks().subscribe((data: any) => {
+      console.log({ data });
+      this.allBanks = data
+    });
   }
   updateShowCreate(show:Boolean) {
     this.createShow = !this.createShow
