@@ -1,5 +1,6 @@
 <div class="contenedor-formulario">
     <div class="wrap">
+        <h6 class="text-black text-center">Para disfrutar de nuestras app debes estar logueado</h6>
         <form #loginform="ngForm" (ngSubmit)="login(loginform)" class="formulario" name="formulario_registro">
             <div>
 
@@ -9,7 +10,7 @@
                 
                 <div class="input-group">
 					<label class="label"  for="email">Correo:</label>
-                    <input  name="email"
+                    <input  name="email" type="email"
                     #email="ngModel" [(ngModel)]="userService.loginToCreate.email" >
                     
                 </div>

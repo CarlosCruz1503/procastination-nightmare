@@ -2,7 +2,7 @@ export class User {
 
     //atributos
       //atributos
-    imagen?:string
+    image?:string
     email?:string 
     name?: string
     password?:string
@@ -12,10 +12,10 @@ export class User {
         name = "",
         email = "",
         password = "",
-        imagen = "",
+        image = "63f7d3ad4027ca9ce1e4ce1e",
         _id = ""
     ) {
-        this.imagen = imagen;
+        this.image = image;
         this.email = email;
         this.name = name;
         this.password= "";

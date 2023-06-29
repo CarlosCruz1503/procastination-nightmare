@@ -1,4 +1,4 @@
-<div class="big-container d-flex midiv2">
+<div class="big-container d-flex midiv2"  *ngIf="login">
     <div class="navbar-lateral">
         <nav class="lateral-navbar top-0 bottom-0 left-0 overflow-hidden text-white">
             <ul class="px-0">
@@ -8,22 +8,6 @@
                             class="rounded-circle logo-navbar" alt="" />
                         <span class="fw-bold text-uppercase fs-5 mx-4">Pro night</span>
                     </div>
-                </li>
-                <li class="list-unstyled mt-1">
-                    <a [routerLink]="['/mainapp']" class="link-lateral-navbar fs-6 d-table text-decoration-none position-relative">
-                        <span class="material-icons-outlined position-relative text-center">
-                            timer
-                        </span>
-                        <span class="name-option position-relative ms-4">Timer</span>
-                    </a>
-                </li>
-                <li class="list-unstyled">
-                    <a [routerLink]="['/mainapp']" class="link-lateral-navbar fs-6 text-decoration-none position-relative d-table">
-                        <span class="material-icons-outlined position-relative text-center">
-                            check_circle
-                        </span>
-                        <span class="name-option position-relative ms-4">Lista de tareas</span>
-                    </a>
                 </li>
                 <li class="list-unstyled">
                     <a [routerLink]="['/mainapp']" (click)="selection='calendar'" class="link-lateral-navbar fs-6 text-decoration-none position-relative d-table">
@@ -57,12 +41,20 @@
                         <span class="name-option position-relative ms-4">Tareas</span>
                     </a>
                 </li>
-                <li class="list-unstyled">
-                    <a [routerLink]="['/home']" class="link-lateral-navbar logout position-absolute text-decoration-none d-table">
+                <li class="list-unstyled" *ngIf="login" >
+                    <div (click)="logOut()" class="link-lateral-navbar logout position-absolute text-decoration-none d-table" style="cursor:pointer">
                         <span class="material-icons-outlined position-relative text-center">
                             logout
                         </span>
                         <span class="name-option position-relative ms-4">Salir</span>
+                    </div>
+                </li>
+                <li class="list-unstyled" *ngIf="!login">
+                    <a [routerLink]="['/login']" class="link-lateral-navbar logout position-absolute text-decoration-none d-table">
+                        <span class="material-icons-outlined position-relative text-center">
+                            login
+                        </span>
+                        <span class="name-option position-relative ms-4">Login</span>
                     </a>
                 </li>
             </ul>
@@ -118,14 +110,14 @@
             </div>
         </nav>
 
-        <div class="container-fluid space-work m-2" [ngSwitch]="selection">
+        <div class="container-fluid space-work m-2" [ngSwitch]="selection" >
             <app-tasktables *ngSwitchCase="'tasktables'"></app-tasktables>
             <app-habits *ngSwitchCase="'habits'"></app-habits>
             <app-calendar *ngSwitchCase="'calendar'"></app-calendar>
             <app-counting *ngSwitchCase="'counting'"></app-counting>
 
             <div *ngSwitchDefault>
-                Seleccione una app
+                <app-calendar *ngSwitchCase="'calendar'"></app-calendar>
             </div>
         </div>
     </div>
