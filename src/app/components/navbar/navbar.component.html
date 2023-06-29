@@ -1,23 +1,27 @@
 <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-around">
-
-        <div class="d-flex flex-row gap-2 align-items-center">
-            <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid">
-                <h1 class="logo">Procrastination Nightmare</h1>
-            </a>
-        </div>
-        <nav id="navbar" class="navbar">
-            <ul>
-                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#about">Acerca de</a></li>
-                <li><a class="nav-link scrollto" href="#services">Features</a></li>
-                <li><a class="nav-link scrollto " href="#portfolio">Misión</a></li>
-                <li><a class="nav-link scrollto" href="#team">Visión</a></li>
-                <li><a class="nav-link scrollto" [routerLink]="['/login']">Login</a></li>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-        <!-- fin navbar -->
-
+  <div class="container d-flex align-items-center justify-content-around">
+    <div>
+      <a href="index.html" class="logo d-flex flex-row gap-2 align-items-center">
+        <img src="assets/img/logo.png" alt="" class="img-fluid" />
+        <h1 class="logo">Procrastination Nightmare</h1>
+      </a>
     </div>
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+        <li><a class="nav-link scrollto" href="#about">Acerca de</a></li>
+        <li><a class="nav-link scrollto" href="#services">Features</a></li>
+        <li><a class="nav-link scrollto" href="#portfolio">Misión</a></li>
+        <li><a class="nav-link scrollto" href="#team">Visión</a></li>
+        <li>
+          <a class="nav-link scrollto" [routerLink]="['/login']">Login</a>
+        </li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    <div>
+      <button class="btn btn-primary pe-4 ps-4">Entrar</button>
+    </div>
+    <!-- fin navbar -->
+  </div>
 </header>
