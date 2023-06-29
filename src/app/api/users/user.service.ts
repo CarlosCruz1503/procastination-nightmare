@@ -47,6 +47,7 @@ export class UserService {
   }
 
   login(data : any){
+    localStorage.setItem('user', data)
     return this.http.post(`${this.urlApi}/login`, data)
   }
 
@@ -69,6 +70,7 @@ export class UserService {
     }
     return decoded
   }
+  
 
   isAdmin(){
     let obj = this.decodeToken()
