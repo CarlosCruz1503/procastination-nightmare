@@ -48,6 +48,7 @@ import { CreateTaskModalComponent } from './components/mainappcomponents/tasktab
 import { DeleteModalComponent } from './components/mainappcomponents/tasktables/delete-modal/delete-modal.component';
 import { UpdateModalComponent } from './components/mainappcomponents/tasktables/update-modal/update-modal.component';
 import { AskHabitComponent } from './components/HabitsComponents/ask-habit/ask-habit.component';
+import { ItsCreatedComponent } from './components/HabitsComponents/its-created/its-created.component';
 registerLocaleData(localeEs)
 
 
@@ -84,7 +85,8 @@ registerLocaleData(localeEs)
     CreateTaskModalComponent,
     DeleteModalComponent,
     UpdateModalComponent,
-    AskHabitComponent
+    AskHabitComponent,
+    ItsCreatedComponent
   ],
   imports: [
     BrowserModule,

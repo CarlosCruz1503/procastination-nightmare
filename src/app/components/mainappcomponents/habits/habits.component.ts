@@ -5,6 +5,8 @@ import { HabitService } from 'src/app/api/habit/habits.service';
 import { Habit } from 'src/app/models/habit.models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AskHabitComponent } from '../../HabitsComponents/ask-habit/ask-habit.component';
+import { ListHabitComponent } from '../../HabitsComponents/list-habit/list-habit.component';
+import { ModalHabitComponent } from '../../HabitsComponents/create-habit/create-habit.component';
 
 @Component({
   selector: 'app-habits',
@@ -17,7 +19,7 @@ export class HabitsComponent {
   actualMonth: any;
   selectedDay?: string;
   selectedCell: { day: string, time: string } | null = null;
-  frequency: string | undefined = '';
+  createdHabitName: string | undefined= '';
   weekDays: string[] = [];
   hours: string[] = [];
   startTime = new Date();
@@ -34,11 +36,18 @@ export class HabitsComponent {
     }
     
   }
-  openAskHabitModal(day: string, time: string, frequency: string | undefined) {
+  openAskHabitModal(day: string, time: string) {
     this.modalService.open(AskHabitComponent);
     this.selectedDay = day;
     this.selectedCell = { day, time };
-    this.frequency = frequency || '';
+    
+  }
+  openListHabitModal() {
+    this.modalService.open(ListHabitComponent);
+   
+  }
+  openModalHabit(){
+    this.modalService.open(ModalHabitComponent)
   }
   isCellSelected(day: string, time: string): boolean {
     return this.selectedCell !== null && this.selectedCell.day === day && this.selectedCell.time === time;
@@ -51,7 +60,10 @@ export class HabitsComponent {
       const firstDayofWeek = new Date(today.setDate(today.getDate() - today.getDay()));
       const lastDayofWeek = new Date(today.setDate(firstDayofWeek.getDate() + 7));
       const intervalDays = eachDayOfInterval({ start: firstDayofWeek, end: lastDayofWeek });
-  
+
+      this.habitService.createdHabitName.subscribe(name => {
+      this.createdHabitName = name; });
+      
       for (let i = 1; i < intervalDays.length; i++) {
         const weekDay = format(intervalDays[i], 'EEE');
         const monthDay = format(intervalDays[i], 'd');
@@ -59,23 +71,13 @@ export class HabitsComponent {
         this.weekDays.push(completeDay);
       }
     }
-    getFrequencyCount(): number[] {
-    if (this.frequency === 'daily') {
-      return [1]; // Mostrar el icono una vez al día
-    } else if (this.frequency === 'weekly') {
-      return [1, 2, 3, 4, 5, 6, 7]; // Mostrar el icono una vez por cada día de la semana
-    } else if (this.frequency === 'monthly') {
-      return Array.from({ length: 30 }, (_, i) => i + 1); // Mostrar el icono una vez por cada día del mes
-    } else {
-      return []; // Frecuencia desconocida
-    }
-  }
     cleanForm(){
       this.habitService.creatingHabit = new Habit()
     }
     createHabit(form: NgForm){
       let data = form.value;
       this.habitService.createHabit(data).subscribe((data:any) => {
+        this.createdHabitName = this.habitService.creatingHabit.name;
         console.log({data})
         this.cleanForm(); 
       })
