@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/api/users/user.service';
 import { User } from 'src/app/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,13 +10,15 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(public userService: UserService){}
+  constructor(public userService: UserService, public router: Router) { }
 
-  ngOnInit(){
-    this.getAllUsers()
-  }
+  ngOnInit() {
+    if (this.userService.isLoggedIn()){
+      this.router.navigate(["/mainapp"])
+    }
+  };
 
-  cleanForm(){
+  cleanForm() {
     this.userService.userToCreate = new User()
   }
 
@@ -23,55 +26,14 @@ export class RegisterComponent {
     // revisar los campos
     let data = form.value;
 
-    if(data._id){
-      // actualizar
-      console.log("entre")
-      this.userService.updateUser(data).subscribe((data) => {
-        alert("Usuario actualizado")        
-      this.getAllUsers()
-      })
-      alert("Va a actualizar un usuario")
-      this.cleanForm()
-      return
-    }
-
-    //crear usuario
-    delete(data._id)
-
+    console.log("entre")
     this.userService.createUser(data).subscribe((data: any) => {
-      console.log({data})
-      this.getAllUsers()
-      this.cleanForm()
-    });
-  }
-
-
-  createUser(form: NgForm){
-    // revisar los campos
-    let data = form.value
-    this.userService.createUser(data).subscribe((data) => {
-      console.log(data);
-      this.getAllUsers()
-      
+      localStorage.setItem('token', data.token)
+      this.router.navigate(["/mainapp"])
+      alert("Usuario Creado")
+      return 
     })
+    alert("Error al crear el usuario")
   }
 
-  getAllUsers(){
-    this.userService.getAllUsers().subscribe((data: any) => {
-      this.userService.allUsers = data.result || []
-      console.log(data);
-      
-    })
-  }
-
-  deleteUser(_id:string){
-    this.userService.deleteUser(_id).subscribe(() => {
-      alert("Usuario eliminado")
-      this.getAllUsers()
-    })
-  }
-
-  updateUser(user: User){
-    this.userService.userToCreate = user
-  }
 }

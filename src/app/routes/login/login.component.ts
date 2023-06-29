@@ -15,6 +15,9 @@ export class LoginComponent {
   }
 
   ngOnInit() {
+    if (this.userService.isLoggedIn()){
+      this.router.navigate(["/mainapp"])
+    }
   };
 
   login(form: NgForm) {
@@ -23,7 +26,7 @@ export class LoginComponent {
 
     this.userService.login(data).subscribe((data: any) => {
       localStorage.setItem('token', data.token)
-      this.router.navigate(["/home"])
+      this.router.navigate(["/mainapp"])
     }, (err: any) => {
       alert("Error al inciar sesión")
     })
