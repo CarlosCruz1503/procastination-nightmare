@@ -56,7 +56,7 @@ export class HabitsComponent {
       const today = new Date(); //Fecha y hora actual
       this.actualDay = format(today, 'dd')
       this.actualMonth = format(today, 'MMMM')
-    
+      
       const firstDayofWeek = new Date(today.setDate(today.getDate() - today.getDay()));
       const lastDayofWeek = new Date(today.setDate(firstDayofWeek.getDate() + 7));
       const intervalDays = eachDayOfInterval({ start: firstDayofWeek, end: lastDayofWeek });
@@ -80,6 +80,12 @@ export class HabitsComponent {
         this.createdHabitName = this.habitService.creatingHabit.name;
         console.log({data})
         this.cleanForm(); 
+      })
+    }
+    getAllHabits(){
+      this.habitService.getHabits().subscribe((data:any) => {
+        this.habitService.allHabits = data || []
+        console.log(data)
       })
     }
 
