@@ -13,7 +13,7 @@ export class EventService {
   urlApi = `${environment.API_URI}/event`
   eventToCreate: EventModel = new EventModel()
   allEvents: EventModel[] = []
-  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY0OTI0NzU1NzZhMjRlODBjOGNjZmI0ZSIsIm5hbWUiOiJDYXJsb3NDcnV6IiwiZW1haWwiOiJjYXJsb3NjcnVAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkMEZXckpQdi5LeUFJYUNFZlUwbnNxT3RONzdjNGNnWWIvVHlMdktkNmVqaUxNV29YemQ4eEciLCJpbWFnZSI6bnVsbH0sImlhdCI6MTY4NzgyMjgxNX0.KfXhvRzJ__IysO9O_lROHy6Afor-KNVPGfjhEAOpQqA'
+  token = localStorage.getItem('token') 
 
   constructor(private http: HttpClient) { }
 
